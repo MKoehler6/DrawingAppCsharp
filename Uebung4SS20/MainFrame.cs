@@ -20,6 +20,7 @@ namespace Uebung4SS20
         public MainFrame()
         {
             InitializeComponent();
+            // zum delegate Redraw wird die Methode M_CAD_Redraw hinzugefügt
             m_CAD.Redraw += M_CAD_Redraw;
         }
 
