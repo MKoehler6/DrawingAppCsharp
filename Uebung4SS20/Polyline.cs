@@ -119,8 +119,36 @@ namespace Uebung4SS20
         }
         public static ClickResult ClickHandler(Point pt, MouseButtons but, ref Curve curElement)
         {
-            MessageBox.Show("Polyline");
-            return ClickResult.canceled;
+            //if (but == MouseButtons.Right)
+            //    return ClickResult.canceled; // Abbruch
+            if (curElement == null || 
+                (!(curElement is Polyline) && but == MouseButtons.Left)) // es ist der 1. Klick
+            {
+                Polyline polyline = new Polyline();
+                polyline.AddPoint(pt);
+                curElement = polyline;
+                return ClickResult.created;
+            }
+            else
+            {
+                Polyline polyline = (Polyline)curElement;
+                if (but == MouseButtons.Left)
+                {
+                    polyline.AddPoint(pt);
+                    return ClickResult.pointHandled;
+                }
+                else
+                {
+                    if (polyline.Points.Count < 2)
+                    {
+                        return ClickResult.canceled;
+                    }
+                    else
+                    {
+                        return ClickResult.finished;
+                    }
+                }
+            }
         }
     }
 }

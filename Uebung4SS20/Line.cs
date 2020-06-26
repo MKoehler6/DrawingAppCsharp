@@ -39,8 +39,20 @@ namespace Uebung4SS20
         }
         public static ClickResult ClickHandler(Point pt, MouseButtons but, ref Curve curElement)
         {
-            MessageBox.Show("Line");
-            return ClickResult.canceled;
+            if (but == MouseButtons.Right)
+                return ClickResult.canceled; // Abbruch
+            else if (curElement == null || !(curElement is Line)) // es ist der 1. Klick
+            {
+                Line line = new Line(pt, pt);
+                curElement = line;
+                return ClickResult.created;
+            }
+            else // es ist der 2. Klick
+            {
+                Line line = (Line)curElement;
+                line.EndPoint = pt;
+                return ClickResult.finished;
+            }
         }
     }
 }

@@ -41,9 +41,8 @@ namespace Uebung4SS20
 
         public static ClickResult ClickHandler(Point pt, MouseButtons but, ref Curve curElement)
         {
-            //MessageBox.Show("Circle");
             if(but == MouseButtons.Right) 
-                return ClickResult.canceled;
+                return ClickResult.canceled; // Abbruch
             else if (curElement == null || !(curElement is Circle)) // es ist der 1. Klick
             {
                 Circle circle = new Circle(pt, 0);
@@ -55,7 +54,6 @@ namespace Uebung4SS20
                 Circle circle = (Circle)curElement;
                 double r = pt.DistanceTo(circle.Center);
                 circle.Radius = r;
-                curElement = circle;
                 return ClickResult.finished;
             }
         }

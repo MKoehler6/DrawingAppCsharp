@@ -88,6 +88,7 @@ namespace Uebung4SS20
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            // Punkt auf mathematisches Koordinatensystem umrechnen
             Point point = TransformScreen2World(e.Location);
             if (m_clickHandler != null) 
             {
@@ -102,11 +103,7 @@ namespace Uebung4SS20
                     m_CAD.AddElement(m_currentCurve);
                     m_currentCurve = null;
                 }
-
             }   
-                
-
-
         }
 
         private Uebung4SS20.Point TransformScreen2World(System.Drawing.Point screenPoint) { 
