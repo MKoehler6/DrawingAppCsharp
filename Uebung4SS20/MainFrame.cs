@@ -26,37 +26,20 @@ namespace Uebung4SS20
 
         private void circleButton_Click(object sender, EventArgs e)
         {
-            double Radius = 50;
-            Curve circle = new Circle(new Point(200 - Radius, 200 + Radius), Radius);
             m_clickHandler = Circle.ClickHandler;
             m_currentCurve = null;
-            m_CAD.AddElement(circle);
         }
 
         private void lineButton_Click(object sender, EventArgs e)
         {
-            Curve line = new Line(new Point(130, 130), new Point(200, 150));
             m_clickHandler = Line.ClickHandler;
             m_currentCurve = null;
-            m_CAD.AddElement(line);
         }
 
         private void polylineButton_Click(object sender, EventArgs e)
         {
-            Point point1 = new Point(300, 150);
-            Point point2 = new Point(310, 100);
-            Point point3 = new Point(340, 160);
-            Point point4 = new Point(380, 80);
-            Polyline polyline = new Polyline();
-            polyline.AddPoint(point1);
-            polyline.AddPoint(point2);
-            polyline.AddPoint(point3);
-            polyline.AddPoint(point4);
-            Curve c = (Curve)polyline; 
-
             m_clickHandler = Polyline.ClickHandler;
             m_currentCurve = null;
-            m_CAD.AddElement(polyline);
         }
         
         // legt den Koordinatenursprung auf unten links fest
@@ -128,8 +111,17 @@ namespace Uebung4SS20
 
         private void toolStripStatusLabel1_Paint(object sender, PaintEventArgs e)
         {
-            toolStripStatusLabel1.Text = "Anzahl Elemente: " + m_CAD.Elements.Count + "   Drawed: " +
-                m_CAD.ElementsDrawed + "  Type: " + m_CAD.type;
+
+        }
+
+        private void MainFrame_KeyDown(object sender, KeyEventArgs e)
+        {
+            // beim Druecken von Esc wird der aktuelle Zeichenbefehl abgebrochen
+            if (e.KeyCode == Keys.Escape)
+            {
+                m_clickHandler = null;
+                result = ClickResult.canceled;
+            }
         }
     }
 }

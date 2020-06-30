@@ -119,8 +119,6 @@ namespace Uebung4SS20
         }
         public static ClickResult ClickHandler(Point pt, MouseButtons but, ref Curve curElement)
         {
-            //if (but == MouseButtons.Right)
-            //    return ClickResult.canceled; // Abbruch
             if (curElement == null || 
                 (!(curElement is Polyline) && but == MouseButtons.Left)) // es ist der 1. Klick
             {

@@ -51,7 +51,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dateiToolStripMenuItem,
@@ -59,15 +58,15 @@
             this.einstellungenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(2799, 58);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1179, 26);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // dateiToolStripMenuItem
             // 
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(131, 52);
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.dateiToolStripMenuItem.Text = "Datei";
             // 
             // zeichnenToolStripMenuItem
@@ -77,31 +76,31 @@
             this.kreisToolStripMenuItem,
             this.polylinieToolStripMenuItem});
             this.zeichnenToolStripMenuItem.Name = "zeichnenToolStripMenuItem";
-            this.zeichnenToolStripMenuItem.Size = new System.Drawing.Size(193, 52);
+            this.zeichnenToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.zeichnenToolStripMenuItem.Text = "Zeichnen";
             // 
             // linieToolStripMenuItem
             // 
             this.linieToolStripMenuItem.Name = "linieToolStripMenuItem";
-            this.linieToolStripMenuItem.Size = new System.Drawing.Size(350, 66);
+            this.linieToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.linieToolStripMenuItem.Text = "Linie";
             // 
             // kreisToolStripMenuItem
             // 
             this.kreisToolStripMenuItem.Name = "kreisToolStripMenuItem";
-            this.kreisToolStripMenuItem.Size = new System.Drawing.Size(350, 66);
+            this.kreisToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.kreisToolStripMenuItem.Text = "Kreis";
             // 
             // polylinieToolStripMenuItem
             // 
             this.polylinieToolStripMenuItem.Name = "polylinieToolStripMenuItem";
-            this.polylinieToolStripMenuItem.Size = new System.Drawing.Size(350, 66);
+            this.polylinieToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.polylinieToolStripMenuItem.Text = "Polylinie";
             // 
             // einstellungenToolStripMenuItem
             // 
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
-            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(259, 52);
+            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
             // 
             // toolStrip1
@@ -111,10 +110,10 @@
             this.lineButton,
             this.circleButton,
             this.polylineButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 58);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 26);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.Size = new System.Drawing.Size(2799, 93);
+            this.toolStrip1.Size = new System.Drawing.Size(1179, 59);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -125,7 +124,7 @@
             this.lineButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.lineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.lineButton.Name = "lineButton";
-            this.lineButton.Size = new System.Drawing.Size(98, 84);
+            this.lineButton.Size = new System.Drawing.Size(44, 56);
             this.lineButton.Text = "Linie";
             this.lineButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.lineButton.Click += new System.EventHandler(this.lineButton_Click);
@@ -138,7 +137,7 @@
             this.circleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.circleButton.Name = "circleButton";
             this.circleButton.RightToLeftAutoMirrorImage = true;
-            this.circleButton.Size = new System.Drawing.Size(101, 84);
+            this.circleButton.Size = new System.Drawing.Size(45, 56);
             this.circleButton.Text = "Kreis";
             this.circleButton.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.circleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -151,7 +150,7 @@
             this.polylineButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.polylineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.polylineButton.Name = "polylineButton";
-            this.polylineButton.Size = new System.Drawing.Size(156, 84);
+            this.polylineButton.Size = new System.Drawing.Size(68, 56);
             this.polylineButton.Text = "Polylinie";
             this.polylineButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.polylineButton.Click += new System.EventHandler(this.polylineButton_Click);
@@ -161,27 +160,27 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1360);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 587);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(3, 0, 44, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(2799, 63);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1179, 25);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(354, 48);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Paint += new System.Windows.Forms.PaintEventHandler(this.toolStripStatusLabel1_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 151);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 85);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(2799, 1209);
+            this.pictureBox1.Size = new System.Drawing.Size(1179, 502);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -191,16 +190,18 @@
             // 
             // MainFrame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2799, 1423);
+            this.ClientSize = new System.Drawing.Size(1179, 612);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "MainFrame";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFrame_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

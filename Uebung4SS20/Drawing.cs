@@ -14,8 +14,6 @@ namespace Uebung4SS20
         public event EventHandler Redraw;
 
         public List<Curve> Elements = new List<Curve>();
-        public int ElementsDrawed = 0;
-        public Type type;
 
         public void AddElement(Curve curve)
         {
@@ -37,12 +35,9 @@ namespace Uebung4SS20
 
         public void Draw(Graphics g)
         {
-            ElementsDrawed = 0;
             foreach (var element in Elements)
             {
                 element.Draw(g);
-                ElementsDrawed++;
-                type = element.GetType();
             }
         }
     }
