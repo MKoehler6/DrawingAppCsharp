@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Point = vectorLib.Point;
 
-namespace Uebung4SS20
+namespace geometryLib
 {
     public enum ClickResult { created, pointHandled, finished, canceled }
 
-    delegate ClickResult ClickHandler(Point pt, MouseButtons but, ref Curve curElement);
+    public delegate ClickResult ClickHandler(Point pt, MouseButtons but, ref Curve curElement);
 
 }

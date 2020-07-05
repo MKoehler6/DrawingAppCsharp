@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Point = vectorLib.Point;
+using vectorLib;
 
-namespace Uebung4SS20
+namespace geometryLib
 {
-    class Line : Curve
+    public class Line : Curve
     {
         public Point StartPoint;
         public Point EndPoint;

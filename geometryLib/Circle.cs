@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using Point = vectorLib.Point;
+using vectorLib;
 
-namespace Uebung4SS20
+namespace geometryLib
 {
-    class Circle : Curve
+    public class Circle : Curve
     {
         public Vector Normal;
         public Point Center;

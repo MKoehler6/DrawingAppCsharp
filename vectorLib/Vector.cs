@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Uebung4SS20
+namespace vectorLib
 {
-    class Vector : PointVectorBase
+    public class Vector : PointVectorBase
     {
         public Vector(double X, double Y, double Z=0):base(X,Y,Z) { }
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 
-namespace Uebung4SS20
+namespace geometryLib
 {
-    abstract class Curve
+    public abstract class Curve
     {
         public virtual double Length { get; }
 

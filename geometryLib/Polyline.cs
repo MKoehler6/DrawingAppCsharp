@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using vectorLib;
+using Point = vectorLib.Point;
 
-namespace Uebung4SS20
+namespace geometryLib
 {
-    class Polyline : Curve
+    public class Polyline : Curve
     {
         private List<Point> Points = new List<Point>();
         public override double Length { get; }

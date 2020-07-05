@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using vectorLib;
+using geometryLib;
+using Point = vectorLib.Point;
 
 namespace Uebung4SS20
 {
@@ -89,8 +92,8 @@ namespace Uebung4SS20
             }   
         }
 
-        private Uebung4SS20.Point TransformScreen2World(System.Drawing.Point screenPoint) { 
-            return new Uebung4SS20.Point(screenPoint.X, -(screenPoint.Y - pictureBox1.Height)); 
+        private Point TransformScreen2World(System.Drawing.Point screenPoint) { 
+            return new Point(screenPoint.X, -(screenPoint.Y - pictureBox1.Height)); 
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)

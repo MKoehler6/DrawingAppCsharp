@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Uebung4SS20
+namespace vectorLib
 {
     class TestPVB : PointVectorBase
     {
