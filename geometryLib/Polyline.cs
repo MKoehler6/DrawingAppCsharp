@@ -11,7 +11,21 @@ namespace geometryLib
     public class Polyline : Curve
     {
         private List<Point> Points = new List<Point>();
-        public override double Length { get; }
+
+        public override double Length
+        {
+            get
+            {
+                double result = 0;
+                for (int i = 0; i < Points.Count - 1; i++)
+                {
+                    Line line = new Line(Points[i], Points[i + 1]);
+                    result += line.Length;
+                }
+                return result;
+            }
+        }
+
         public bool isClosed
         {
             get
@@ -19,6 +33,7 @@ namespace geometryLib
                 return Points[0].Equals(Points[Points.Count - 1]);
             }
         }
+
         public bool isPlanar
         {
             get

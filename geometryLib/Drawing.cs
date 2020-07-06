@@ -15,6 +15,67 @@ namespace geometryLib
 
         public List<Curve> Elements = new List<Curve>();
 
+        public List<Line> Lines
+        {
+            get
+            {
+                IEnumerable<Line> result =
+                    from e in Elements
+                    where e is Line
+                    select e as Line;
+                return result.ToList();
+            }
+        }
+
+        public List<Circle> Circles
+        {
+            get
+            {
+                IEnumerable<Circle> result =
+                    from e in Elements
+                    where e is Circle
+                    select e as Circle;
+                return result.ToList();
+            }
+        }
+
+        public List<Polyline> Polylines
+        {
+            get
+            {
+                IEnumerable<Polyline> result =
+                    from e in Elements
+                    where e is Polyline
+                    select e as Polyline;
+                return result.ToList();
+            }
+        }
+
+        public double LengthOfAllLines(List<Line> elements)
+        {
+            double result = 0;
+            foreach (Line element in elements) result += element.Length;
+            return result;
+        }
+
+        public double LengthOfAllCircles(List<Circle> elements)
+        {
+            double result = 0;
+            foreach (Circle element in elements) result += element.Length;
+            return result;
+        }
+
+        public double LengthOfAllPolylines(List<Polyline> elements)
+        {
+            double result = 0;
+            foreach (Polyline element in elements) result += element.Length;
+            return result;
+        }
+
+
+        // hinzufügen des Elements und aufrufen des Delegates Redraw, diesem wurde in MainFrame.cs die Methode M_CAD_Redraw 
+        // hinzugefügt, dort wird Invalidate aufgerufen und damit die Methode pictureBox1_Paint, die dann in dieser Klasse
+        // Draw aufruft
         public void AddElement(Curve curve)
         {
             Elements.Add(curve);
@@ -33,6 +94,7 @@ namespace geometryLib
             if (Redraw != null) Redraw(this, new EventArgs());
         }
 
+        // wird durch pictureBox1_Paint bei jedem Neuzeichnen aufgerufen
         public void Draw(Graphics g)
         {
             foreach (var element in Elements)

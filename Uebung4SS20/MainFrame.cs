@@ -67,6 +67,7 @@ namespace Uebung4SS20
             pictureBox1.Invalidate();
         }
 
+        // wird durch das Delegat Redraw aufgerufen
         private void M_CAD_Redraw(object sender, EventArgs e)
         {
             pictureBox1.Invalidate();
@@ -92,6 +93,7 @@ namespace Uebung4SS20
             }   
         }
 
+        // Punkt auf mathematisches Koordinatensystem umrechnen
         private Point TransformScreen2World(System.Drawing.Point screenPoint) { 
             return new Point(screenPoint.X, -(screenPoint.Y - pictureBox1.Height)); 
         }
@@ -101,14 +103,7 @@ namespace Uebung4SS20
             if (result == ClickResult.created)
             {
                 Point point = TransformScreen2World(e.Location);
-                if (m_currentCurve is Circle)
-                {
-                    Circle circle = (Circle)m_currentCurve;
-                    double r = point.DistanceTo(circle.Center);
-                    circle.Radius = r;
-                    m_CAD.AddElement(circle);
-                    statusStrip1.Refresh();
-                }
+
             }
         }
 
@@ -125,6 +120,13 @@ namespace Uebung4SS20
                 m_clickHandler = null;
                 result = ClickResult.canceled;
             }
+        }
+
+        private void infoButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Anzahl Linien: " + m_CAD.Lines.Count() + " Gesamtlänge: " + m_CAD.LengthOfAllLines(m_CAD.Lines) + "\n"
+                + "Anzahl Circles: " + m_CAD.Circles.Count() + " Gesamtlänge: " + m_CAD.LengthOfAllCircles(m_CAD.Circles) + "\n"
+                + "Anzahl Polylines: " + m_CAD.Polylines.Count() + " Gesamtlänge: " + m_CAD.LengthOfAllPolylines(m_CAD.Polylines) + "\n");
         }
     }
 }
