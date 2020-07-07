@@ -134,7 +134,7 @@ namespace geometryLib
         {
             if (m_currentCurve != null)
             {
-                m_tmpPointHandler(point, ref m_tmpCurveElement);
+                //m_tmpPointHandler(point, ref m_tmpCurveElement);
             }
         }
     }
