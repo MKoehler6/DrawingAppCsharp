@@ -57,5 +57,10 @@ namespace geometryLib
                 return ClickResult.finished;
             }
         }
+
+        public static void TmpPointHandler()
+        {
+
+        }
     }
 }

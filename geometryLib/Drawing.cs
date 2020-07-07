@@ -4,6 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vectorLib;
+using geometryLib;
+using Point = vectorLib.Point;
+using System.Windows.Forms;
 
 namespace geometryLib
 {
@@ -12,6 +16,11 @@ namespace geometryLib
         //https://stackoverflow.com/questions/803242/understanding-events-and-event-handlers-in-c-sharp
         //EventHandler ist ein Delegat vom System: public delegate void EventHandler(object sender, EventArgs e);
         public event EventHandler Redraw;
+        public Curve m_currentCurve;
+        public Curve m_tmpCurveElement;
+        public ClickHandler m_clickHandler = null;
+        public TmpPointHandler m_tmpPointHandler = null;
+        private ClickResult result;
 
         public List<Curve> Elements = new List<Curve>();
 
@@ -100,6 +109,32 @@ namespace geometryLib
             foreach (var element in Elements)
             {
                 element.Draw(g);
+            }
+        }
+
+        public void MouseDownHandler(Point point, MouseEventArgs e)
+        {
+            if (m_clickHandler != null)
+            {
+                result = m_clickHandler(point, e.Button, ref m_currentCurve);
+                if (result == ClickResult.canceled)
+                {
+                    m_currentCurve = null;
+                    m_clickHandler = null;
+                }
+                else if (result == ClickResult.finished)
+                {
+                    AddElement(m_currentCurve);
+                    m_currentCurve = null;
+                }
+            }
+        }
+
+        public void MouseMoveHandler(Point point)
+        {
+            if (m_currentCurve != null)
+            {
+                m_tmpPointHandler(point, ref m_tmpCurveElement);
             }
         }
     }

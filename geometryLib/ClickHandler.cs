@@ -12,4 +12,6 @@ namespace geometryLib
 
     public delegate ClickResult ClickHandler(Point pt, MouseButtons but, ref Curve curElement);
 
+    public delegate void TmpPointHandler(Point pt, ref Curve tmpCurveElement);
+
 }

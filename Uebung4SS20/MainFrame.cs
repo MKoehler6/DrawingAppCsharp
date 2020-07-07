@@ -15,10 +15,7 @@ namespace Uebung4SS20
 {
     public partial class MainFrame : Form
     {
-        Drawing m_CAD = new Drawing();
-        private ClickHandler m_clickHandler = null;
-        Curve m_currentCurve;
-        ClickResult result;
+        Drawing m_CAD = new Drawing();       
 
         public MainFrame()
         {
@@ -29,20 +26,20 @@ namespace Uebung4SS20
 
         private void circleButton_Click(object sender, EventArgs e)
         {
-            m_clickHandler = Circle.ClickHandler;
-            m_currentCurve = null;
+            m_CAD.m_clickHandler = Circle.ClickHandler;
+            m_CAD.m_currentCurve = null;
         }
 
         private void lineButton_Click(object sender, EventArgs e)
         {
-            m_clickHandler = Line.ClickHandler;
-            m_currentCurve = null;
+            m_CAD.m_clickHandler = Line.ClickHandler;
+            m_CAD.m_currentCurve = null;
         }
 
         private void polylineButton_Click(object sender, EventArgs e)
         {
-            m_clickHandler = Polyline.ClickHandler;
-            m_currentCurve = null;
+            m_CAD.m_clickHandler = Polyline.ClickHandler;
+            m_CAD.m_currentCurve = null;
         }
         
         // legt den Koordinatenursprung auf unten links fest
@@ -77,20 +74,7 @@ namespace Uebung4SS20
         {
             // Punkt auf mathematisches Koordinatensystem umrechnen
             Point point = TransformScreen2World(e.Location);
-            if (m_clickHandler != null) 
-            {
-                result = m_clickHandler(point, e.Button, ref m_currentCurve);
-                if (result == ClickResult.canceled)
-                {
-                    m_currentCurve = null;
-                    m_clickHandler = null;
-                }
-                else if (result == ClickResult.finished)
-                {
-                    m_CAD.AddElement(m_currentCurve);
-                    m_currentCurve = null;
-                }
-            }   
+            m_CAD.MouseDownHandler(point, e);  
         }
 
         // Punkt auf mathematisches Koordinatensystem umrechnen
@@ -100,11 +84,8 @@ namespace Uebung4SS20
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (result == ClickResult.created)
-            {
-                Point point = TransformScreen2World(e.Location);
-
-            }
+            Point point = TransformScreen2World(e.Location);
+            m_CAD.MouseMoveHandler(point);
         }
 
         private void toolStripStatusLabel1_Paint(object sender, PaintEventArgs e)
@@ -117,8 +98,8 @@ namespace Uebung4SS20
             // beim Druecken von Esc wird der aktuelle Zeichenbefehl abgebrochen
             if (e.KeyCode == Keys.Escape)
             {
-                m_clickHandler = null;
-                result = ClickResult.canceled;
+                //m_clickHandler = null;
+                //result = ClickResult.canceled;
             }
         }
 
