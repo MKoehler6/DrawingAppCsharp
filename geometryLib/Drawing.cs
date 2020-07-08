@@ -17,7 +17,6 @@ namespace geometryLib
         //EventHandler ist ein Delegat vom System: public delegate void EventHandler(object sender, EventArgs e);
         public event EventHandler Redraw;
         public Curve m_currentCurve;
-        public Curve m_tmpCurveElement;
         public ClickHandler m_clickHandler = null;
         public TmpPointHandler m_tmpPointHandler = null;
         private ClickResult result;
@@ -81,6 +80,27 @@ namespace geometryLib
             return result;
         }
 
+        public void CircleButtonClickHandler()
+        {
+            m_clickHandler = Circle.ClickHandler;
+            m_tmpPointHandler = Circle.TmpPointHandler;
+            m_currentCurve = null;
+        }
+
+        public void LineButtonClickHandler()
+        {
+            m_clickHandler = Line.ClickHandler;
+            m_tmpPointHandler = Line.TmpPointHandler;
+            m_currentCurve = null;
+        }
+
+        public void PolylineButtonClickHandler ()
+        {
+            m_clickHandler = Polyline.ClickHandler;
+            m_tmpPointHandler = Polyline.TmpPointHandler;
+            m_currentCurve = null;
+        }
+
 
         // hinzufügen des Elements und aufrufen des Delegates Redraw, diesem wurde in MainFrame.cs die Methode M_CAD_Redraw 
         // hinzugefügt, dort wird Invalidate aufgerufen und damit die Methode pictureBox1_Paint, die dann in dieser Klasse
@@ -110,6 +130,10 @@ namespace geometryLib
             {
                 element.Draw(g);
             }
+            if (m_currentCurve != null)
+            {
+                m_currentCurve.Draw(g);
+            }
         }
 
         public void MouseDownHandler(Point point, MouseEventArgs e)
@@ -119,8 +143,7 @@ namespace geometryLib
                 result = m_clickHandler(point, e.Button, ref m_currentCurve);
                 if (result == ClickResult.canceled)
                 {
-                    m_currentCurve = null;
-                    m_clickHandler = null;
+                    Cancel();
                 }
                 else if (result == ClickResult.finished)
                 {
@@ -134,8 +157,16 @@ namespace geometryLib
         {
             if (m_currentCurve != null)
             {
-                //m_tmpPointHandler(point, ref m_tmpCurveElement);
+                m_tmpPointHandler(point, ref m_currentCurve);
+                if (Redraw != null) Redraw(this, new EventArgs());
             }
+        }
+
+        public void Cancel()
+        {
+            m_currentCurve = null;
+            result = ClickResult.canceled;
+            if (Redraw != null) Redraw(this, new EventArgs());
         }
     }
 }

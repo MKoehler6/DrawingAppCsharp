@@ -26,20 +26,17 @@ namespace Uebung4SS20
 
         private void circleButton_Click(object sender, EventArgs e)
         {
-            m_CAD.m_clickHandler = Circle.ClickHandler;
-            m_CAD.m_currentCurve = null;
+            m_CAD.CircleButtonClickHandler();
         }
 
         private void lineButton_Click(object sender, EventArgs e)
         {
-            m_CAD.m_clickHandler = Line.ClickHandler;
-            m_CAD.m_currentCurve = null;
+            m_CAD.LineButtonClickHandler();
         }
 
         private void polylineButton_Click(object sender, EventArgs e)
         {
-            m_CAD.m_clickHandler = Polyline.ClickHandler;
-            m_CAD.m_currentCurve = null;
+            m_CAD.PolylineButtonClickHandler();
         }
         
         // legt den Koordinatenursprung auf unten links fest
@@ -98,8 +95,7 @@ namespace Uebung4SS20
             // beim Druecken von Esc wird der aktuelle Zeichenbefehl abgebrochen
             if (e.KeyCode == Keys.Escape)
             {
-                //m_clickHandler = null;
-                //result = ClickResult.canceled;
+                m_CAD.Cancel();
             }
         }
 

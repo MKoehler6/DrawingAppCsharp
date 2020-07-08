@@ -58,9 +58,12 @@ namespace geometryLib
             }
         }
 
-        public static void TmpPointHandler()
+        public static void TmpPointHandler(Point point, ref Curve curElement)
         {
-
+            Circle circle = (Circle)curElement;
+            double r = point.DistanceTo(circle.Center);
+            circle.Radius = r;
+            curElement = circle;
         }
     }
 }

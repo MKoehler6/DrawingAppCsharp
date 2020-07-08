@@ -121,9 +121,9 @@ namespace geometryLib
         {
 
         }
-        public void RemovePoint (int position)
+        public void RemoveLastPoint ()
         {
-
+            Points.RemoveAt(Points.Count - 1);
         }
 
         public override void Draw(Graphics g)
@@ -164,6 +164,17 @@ namespace geometryLib
                     }
                 }
             }
+        }
+
+        public static void TmpPointHandler(Point point, ref Curve curElement)
+        {
+            Polyline polyline = (Polyline)curElement;
+            if (polyline.Points.Count > 1)
+            {
+                polyline.RemoveLastPoint();
+            }
+            polyline.AddPoint(point);
+            curElement = polyline;
         }
     }
 }

@@ -56,5 +56,11 @@ namespace geometryLib
                 return ClickResult.finished;
             }
         }
+        public static void TmpPointHandler(Point point, ref Curve curElement)
+        {
+            Line line = (Line)curElement;
+            line.EndPoint = point;
+            curElement = line;
+        }
     }
 }
