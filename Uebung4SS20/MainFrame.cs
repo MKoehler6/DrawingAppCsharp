@@ -22,6 +22,8 @@ namespace Uebung4SS20
             InitializeComponent();
             // zum delegate Redraw wird die Methode M_CAD_Redraw hinzugefügt
             m_CAD.Redraw += M_CAD_Redraw;
+            StatusManager.Instance.StatusMessageChange += (sender, args) => toolStripStatusLabel1.Text = args.Message;
+            StatusManager.Instance.SetStatus("kein Befehl aktiv");
         }
 
         private void circleButton_Click(object sender, EventArgs e)
