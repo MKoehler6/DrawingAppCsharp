@@ -11,6 +11,8 @@ namespace geometryLib
     public class Polyline : Curve
     {
         private List<Point> Points = new List<Point>();
+        public const string STARTMESSAGE = "Polylinie: Linksklick erzeugt ersten Punkt der neuen Polylinie   ESC: Abbruch";
+        public const string ENDMESSAGE = "Polylinie: Linkssklick erzeugt weitere Punkte, Rechtsklick beendet   ESC: Abbruch";
 
         public override double Length
         {
@@ -139,6 +141,7 @@ namespace geometryLib
             if (curElement == null || 
                 (!(curElement is Polyline) && but == MouseButtons.Left)) // es ist der 1. Klick
             {
+                StatusManager.Instance.SetStatus(ENDMESSAGE);
                 Polyline polyline = new Polyline();
                 polyline.AddPoint(pt);
                 curElement = polyline;
@@ -160,6 +163,7 @@ namespace geometryLib
                     }
                     else
                     {
+                        StatusManager.Instance.SetStatus(STARTMESSAGE);
                         return ClickResult.finished;
                     }
                 }

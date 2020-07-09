@@ -22,7 +22,9 @@ namespace Uebung4SS20
             InitializeComponent();
             // zum delegate Redraw wird die Methode M_CAD_Redraw hinzugefügt
             m_CAD.Redraw += M_CAD_Redraw;
+            // zum delegate StatusMessageChange wird eine Implementierung einer Methode hinzugefügt
             StatusManager.Instance.StatusMessageChange += (sender, args) => toolStripStatusLabel1.Text = args.Message;
+
             StatusManager.Instance.SetStatus("kein Befehl aktiv");
         }
 
@@ -97,6 +99,7 @@ namespace Uebung4SS20
             // beim Druecken von Esc wird der aktuelle Zeichenbefehl abgebrochen
             if (e.KeyCode == Keys.Escape)
             {
+                StatusManager.Instance.SetStatus("Kein Befehl aktiv");
                 m_CAD.Cancel();
             }
         }

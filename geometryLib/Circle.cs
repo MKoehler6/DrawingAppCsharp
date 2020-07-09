@@ -11,6 +11,8 @@ namespace geometryLib
         public Vector Normal;
         public Point Center;
         public double Radius;
+        public const string STARTMESSAGE = "Kreis: Linksklick erzeugt Mittelpunkt des neuen Kreises   ESC: Abbruch";
+        public const string ENDMESSAGE = "Kreis: Linkssklick beendet den Kreis   ESC: Abbruch";
         public override double Length {
             get 
             {
@@ -45,12 +47,14 @@ namespace geometryLib
                 return ClickResult.canceled; // Abbruch
             else if (curElement == null || !(curElement is Circle)) // es ist der 1. Klick
             {
+                StatusManager.Instance.SetStatus(ENDMESSAGE);
                 Circle circle = new Circle(pt, 0);
                 curElement = circle;
                 return ClickResult.created;
             }
             else // es ist der 2. Klick
             {
+                StatusManager.Instance.SetStatus(STARTMESSAGE);
                 Circle circle = (Circle)curElement;
                 double r = pt.DistanceTo(circle.Center);
                 circle.Radius = r;

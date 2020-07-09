@@ -12,6 +12,8 @@ namespace geometryLib
     {
         public Point StartPoint;
         public Point EndPoint;
+        public const string STARTMESSAGE = "Linie: Linksklick erzeugt ersten Punkt der neuen Linie   ESC: Abbruch";
+        public const string ENDMESSAGE = "Linie: Linkssklick erzeugt Endpunkt der Linie   ESC: Abbruch";
         public Vector Direction 
         { 
             get
@@ -45,12 +47,14 @@ namespace geometryLib
                 return ClickResult.canceled; // Abbruch
             else if (curElement == null || !(curElement is Line)) // es ist der 1. Klick
             {
+                StatusManager.Instance.SetStatus(ENDMESSAGE);
                 Line line = new Line(pt, pt);
                 curElement = line;
                 return ClickResult.created;
             }
             else // es ist der 2. Klick
             {
+                StatusManager.Instance.SetStatus(STARTMESSAGE);
                 Line line = (Line)curElement;
                 line.EndPoint = pt;
                 return ClickResult.finished;

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace geometryLib
 {
+    /*
+     * diese Klasse speichert die Status-Message und wird dann dem delegate StatusMessageChange
+     * übergeben
+     */
     public class StatusMessageEventArgs : EventArgs
     {
         public string Message;

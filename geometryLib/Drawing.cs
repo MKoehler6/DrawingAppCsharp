@@ -85,6 +85,7 @@ namespace geometryLib
             m_clickHandler = Circle.ClickHandler;
             m_tmpPointHandler = Circle.TmpPointHandler;
             m_currentCurve = null;
+            StatusManager.Instance.SetStatus("Kreis: Linksklick erzeugt Mittelpunkt des neuen Kreises   ESC: Abbruch");
         }
 
         public void LineButtonClickHandler()
@@ -92,6 +93,7 @@ namespace geometryLib
             m_clickHandler = Line.ClickHandler;
             m_tmpPointHandler = Line.TmpPointHandler;
             m_currentCurve = null;
+            StatusManager.Instance.SetStatus("Linie: Linksklick erzeugt ersten Punkt der neuen Linie   ESC: Abbruch");
         }
 
         public void PolylineButtonClickHandler ()
@@ -99,6 +101,7 @@ namespace geometryLib
             m_clickHandler = Polyline.ClickHandler;
             m_tmpPointHandler = Polyline.TmpPointHandler;
             m_currentCurve = null;
+            StatusManager.Instance.SetStatus("Polylinie: Linksklick erzeugt ersten Punkt der neuen Polylinie   ESC: Abbruch");
         }
 
 
@@ -150,7 +153,7 @@ namespace geometryLib
                     AddElement(m_currentCurve);
                     m_currentCurve = null;
                 }
-            }
+            } 
         }
 
         public void MouseMoveHandler(Point point)
@@ -165,6 +168,7 @@ namespace geometryLib
         public void Cancel()
         {
             m_currentCurve = null;
+            m_clickHandler = null;
             result = ClickResult.canceled;
             if (Redraw != null) Redraw(this, new EventArgs());
         }
