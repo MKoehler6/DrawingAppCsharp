@@ -36,6 +36,8 @@ namespace geometryLib
             this.EndPoint = EndPoint;
         }
 
+        public Line() { }
+
         public override void Draw(Graphics g)
         {
             g.DrawLine(DrawPen, (float) StartPoint.X, (float)StartPoint.Y, 

@@ -110,5 +110,21 @@ namespace Uebung4SS20
                 + "Anzahl Circles: " + m_CAD.Circles.Count() + " Gesamtlänge: " + m_CAD.LengthOfAllCircles(m_CAD.Circles) + "\n"
                 + "Anzahl Polylines: " + m_CAD.Polylines.Count() + " Gesamtlänge: " + m_CAD.LengthOfAllPolylines(m_CAD.Polylines) + "\n");
         }
+
+        private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = ".drw",
+                CheckPathExists = true,
+                Filter = "Zeichendatei (*.drw)|*.drw",
+                InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "In welche Datei soll gespeichert werden."
+            };
+
+            if(saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                m_CAD.Save(saveFileDialog.FileName);
+        }
     }
 }

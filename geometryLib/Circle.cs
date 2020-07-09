@@ -20,6 +20,8 @@ namespace geometryLib
             }
         }
 
+        public Circle() { }
+
         public Circle(Vector Normal, Point Center, double Radius)
         {
             this.Normal = Normal;

@@ -8,6 +8,8 @@ using vectorLib;
 using geometryLib;
 using Point = vectorLib.Point;
 using System.Windows.Forms;
+using System.IO;
+using System.Xml.Serialization; 
 
 namespace geometryLib
 {
@@ -171,6 +173,23 @@ namespace geometryLib
             m_clickHandler = null;
             result = ClickResult.canceled;
             if (Redraw != null) Redraw(this, new EventArgs());
+        }
+
+        public void Save (string fileName)
+        {
+            using (StreamWriter streamWriter = new StreamWriter(fileName))
+            {
+                // Die Typen DrawPen, m_clickHandler und m_tmpPointHandler lassen sich nicht serialisieren,
+                // da sie keinen parameterlosen Konstruktor haben und müssen mit XmlIgnore gekennzeichnet werden
+                XmlAttributeOverrides overrides = new XmlAttributeOverrides();
+                XmlAttributes attribs = new XmlAttributes();
+                attribs.XmlIgnore = true;
+                overrides.Add(typeof(Curve), "DrawPen", attribs);
+                overrides.Add(typeof(Drawing), "m_clickHandler", attribs);
+                overrides.Add(typeof(Drawing), "m_tmpPointHandler", attribs);
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(Drawing), overrides);
+                xmlSerializer.Serialize(streamWriter, this);
+            }
         }
     }
 }
