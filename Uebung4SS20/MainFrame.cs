@@ -113,7 +113,7 @@ namespace Uebung4SS20
 
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            SaveFileDialog saveFileDialogXml = new SaveFileDialog
             {
                 AddExtension = true,
                 DefaultExt = ".xml",
@@ -123,8 +123,21 @@ namespace Uebung4SS20
                 Title = "In welche Datei soll gespeichert werden."
             };
 
-            if(saveFileDialog.ShowDialog(this) == DialogResult.OK)
-                m_CAD.Save(saveFileDialog.FileName);
+            if(saveFileDialogXml.ShowDialog(this) == DialogResult.OK)
+                m_CAD.SaveXml(saveFileDialogXml.FileName);
+
+            SaveFileDialog saveFileDialogJson = new SaveFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = ".json",
+                CheckPathExists = true,
+                Filter = "Zeichendatei (*.json)|*.json",
+                InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "In welche Datei soll gespeichert werden."
+            };
+
+            if (saveFileDialogJson.ShowDialog(this) == DialogResult.OK)
+                m_CAD.SaveJson(saveFileDialogJson.FileName);
         }
     }
 }

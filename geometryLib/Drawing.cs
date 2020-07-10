@@ -9,7 +9,8 @@ using geometryLib;
 using Point = vectorLib.Point;
 using System.Windows.Forms;
 using System.IO;
-using System.Xml.Serialization; 
+using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace geometryLib
 {
@@ -175,11 +176,11 @@ namespace geometryLib
             if (Redraw != null) Redraw(this, new EventArgs());
         }
 
-        public void Save (string fileName)
+        public void SaveXml (string fileName)
         {
+            // Drawing als .xml speichern
             using (StreamWriter streamWriter = new StreamWriter(fileName))
             {
-                Console.WriteLine(fileName);
                 // Die Typen DrawPen, m_clickHandler und m_tmpPointHandler lassen sich nicht serialisieren,
                 // da sie keinen parameterlosen Konstruktor haben und müssen mit XmlIgnore gekennzeichnet werden
                 XmlAttributeOverrides overrides = new XmlAttributeOverrides();
@@ -191,6 +192,16 @@ namespace geometryLib
 
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(Drawing), overrides);
                 xmlSerializer.Serialize(streamWriter, this);
+            }            
+        }
+
+        public void SaveJson (string fileName)
+        {
+            // Drawing als .json speichern
+            using (StreamWriter streamWriter = new StreamWriter(fileName))
+            {
+                var serializer = new JsonSerializer();
+                serializer.Serialize(streamWriter, this);
             }
         }
     }
