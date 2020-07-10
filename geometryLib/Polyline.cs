@@ -14,6 +14,7 @@ namespace geometryLib
         public const string STARTMESSAGE = "Polylinie: Linksklick erzeugt ersten Punkt der neuen Polylinie   ESC: Abbruch";
         public const string ENDMESSAGE = "Polylinie: Linkssklick erzeugt weitere Punkte, Rechtsklick beendet   ESC: Abbruch";
 
+        // parameterloser Konstruktor für die Serialisierung
         public Polyline() { }
 
         // für die Serialisierung wird die List<Point> in ein Array umgewandelt und zurück

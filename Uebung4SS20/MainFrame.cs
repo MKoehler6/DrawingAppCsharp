@@ -116,9 +116,9 @@ namespace Uebung4SS20
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 AddExtension = true,
-                DefaultExt = ".drw",
+                DefaultExt = ".xml",
                 CheckPathExists = true,
-                Filter = "Zeichendatei (*.drw)|*.drw",
+                Filter = "Zeichendatei (*.xml)|*.xml",
                 InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 Title = "In welche Datei soll gespeichert werden."
             };

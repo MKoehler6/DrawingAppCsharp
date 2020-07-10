@@ -23,7 +23,7 @@ namespace geometryLib
         public TmpPointHandler m_tmpPointHandler = null;
         private ClickResult result;
 
-        public List<Curve> Elements = new List<Curve>();
+        private List<Curve> Elements = new List<Curve>();
 
         public List<Line> Lines
         {
@@ -179,6 +179,7 @@ namespace geometryLib
         {
             using (StreamWriter streamWriter = new StreamWriter(fileName))
             {
+                Console.WriteLine(fileName);
                 // Die Typen DrawPen, m_clickHandler und m_tmpPointHandler lassen sich nicht serialisieren,
                 // da sie keinen parameterlosen Konstruktor haben und müssen mit XmlIgnore gekennzeichnet werden
                 XmlAttributeOverrides overrides = new XmlAttributeOverrides();
