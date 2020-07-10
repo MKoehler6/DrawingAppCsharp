@@ -188,6 +188,7 @@ namespace geometryLib
                 overrides.Add(typeof(Curve), "DrawPen", attribs);
                 overrides.Add(typeof(Drawing), "m_clickHandler", attribs);
                 overrides.Add(typeof(Drawing), "m_tmpPointHandler", attribs);
+
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(Drawing), overrides);
                 xmlSerializer.Serialize(streamWriter, this);
             }
