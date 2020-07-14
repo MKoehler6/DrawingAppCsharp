@@ -24,9 +24,13 @@ namespace geometryLib
         public TmpPointHandler m_tmpPointHandler = null;
         private ClickResult result;
 
+        [XmlArrayItem("Line", typeof(Line))]
+        [XmlArrayItem("Circle", typeof(Circle))]
+        [XmlArray("Polyline")]
+        [XmlArrayItem("pointsArray", typeof(Point[]))]
         private List<Curve> Elements = new List<Curve>();
 
-        public List<Line> Lines
+        public Line[] Lines
         {
             get
             {
@@ -34,11 +38,15 @@ namespace geometryLib
                     from e in Elements
                     where e is Line
                     select e as Line;
-                return result.ToList();
+                return result.ToArray();
+            }
+            set
+            {
+                foreach (Line line in value) AddElement(line);
             }
         }
 
-        public List<Circle> Circles
+        public Circle[] Circles
         {
             get
             {
@@ -46,11 +54,15 @@ namespace geometryLib
                     from e in Elements
                     where e is Circle
                     select e as Circle;
-                return result.ToList();
+                return result.ToArray();
+            }
+            set
+            {
+                foreach (Circle circle in value) AddElement(circle);
             }
         }
 
-        public List<Polyline> Polylines
+        public Polyline[] Polylines
         {
             get
             {
@@ -58,25 +70,29 @@ namespace geometryLib
                     from e in Elements
                     where e is Polyline
                     select e as Polyline;
-                return result.ToList();
+                return result.ToArray();
+            }
+            set
+            {
+                foreach (Polyline polyline in value) AddElement(polyline);
             }
         }
 
-        public double LengthOfAllLines(List<Line> elements)
+        public double LengthOfAllLines(Line[] elements)
         {
             double result = 0;
             foreach (Line element in elements) result += element.Length;
             return result;
         }
 
-        public double LengthOfAllCircles(List<Circle> elements)
+        public double LengthOfAllCircles(Circle[] elements)
         {
             double result = 0;
             foreach (Circle element in elements) result += element.Length;
             return result;
         }
 
-        public double LengthOfAllPolylines(List<Polyline> elements)
+        public double LengthOfAllPolylines(Polyline[] elements)
         {
             double result = 0;
             foreach (Polyline element in elements) result += element.Length;
@@ -195,15 +211,15 @@ namespace geometryLib
             }            
         }
 
-        public void SaveJson (string fileName)
-        {
-            // Drawing als .json speichern
-            using (StreamWriter streamWriter = new StreamWriter(fileName))
-            {
-                var serializer = new JsonSerializer();
-                serializer.Serialize(streamWriter, this);
-            }
-        }
+        //public void SaveJson (string fileName)
+        //{
+        //    // Drawing als .json speichern
+        //    using (StreamWriter streamWriter = new StreamWriter(fileName))
+        //    {
+        //        var serializer = new JsonSerializer();
+        //        serializer.Serialize(streamWriter, this);
+        //    }
+        //}
 
         public void OpenXml (string fileName)
         {
@@ -215,13 +231,14 @@ namespace geometryLib
                 overrides.Add(typeof(Curve), "DrawPen", attribs);
                 overrides.Add(typeof(Drawing), "m_clickHandler", attribs);
                 overrides.Add(typeof(Drawing), "m_tmpPointHandler", attribs);
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(TestDrawing), overrides);
-                TestDrawing testDrawing = (TestDrawing)xmlSerializer.Deserialize(streamReader);
-                Console.WriteLine(testDrawing.lines[0].StartPoint.ToString());
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(Drawing), overrides);
+                Drawing drawing = (Drawing)xmlSerializer.Deserialize(streamReader);
 
-                for (int i = 0; i < testDrawing.lines.Length; i++) this.Elements.Add(testDrawing.lines[i]);
-                for (int i = 0; i < testDrawing.circles.Length; i++) this.Elements.Add(testDrawing.circles[i]);
-                for (int i = 0; i < testDrawing.polylines.Length; i++) this.Elements.Add(testDrawing.polylines[i]);
+                Console.WriteLine(drawing.Lines[0].StartPoint.ToString());
+
+                for (int i = 0; i < drawing.Lines.Length; i++) this.Elements.Add(drawing.Lines[i]);
+                for (int i = 0; i < drawing.Circles.Length; i++) this.Elements.Add(drawing.Circles[i]);
+                for (int i = 0; i < drawing.Polylines.Length; i++) this.Elements.Add(drawing.Polylines[i]);
 
                 if (Redraw != null) Redraw(this, new EventArgs());
             }
@@ -237,8 +254,8 @@ namespace geometryLib
         [XmlArrayItem("Circle", typeof(Circle))]
         public Circle[] circles;
 
-        [XmlArray("Polylines")]
-        [XmlArrayItem("pointsArray", typeof(Point[]))]
-        public Polyline[] polylines;
+        //[XmlArray("Polylines")]
+        //[XmlArrayItem("pointsArray", typeof(Point[]))]
+        //public Polyline[] polylines;
     }
 }

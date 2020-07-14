@@ -106,9 +106,9 @@ namespace Uebung4SS20
 
         private void infoButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Anzahl Linien: " + m_CAD.Lines.Count() + " Gesamtlänge: " + m_CAD.LengthOfAllLines(m_CAD.Lines) + "\n"
-                + "Anzahl Circles: " + m_CAD.Circles.Count() + " Gesamtlänge: " + m_CAD.LengthOfAllCircles(m_CAD.Circles) + "\n"
-                + "Anzahl Polylines: " + m_CAD.Polylines.Count() + " Gesamtlänge: " + m_CAD.LengthOfAllPolylines(m_CAD.Polylines) + "\n");
+            MessageBox.Show("Anzahl Linien: " + m_CAD.Lines.Length + " Gesamtlänge: " + m_CAD.LengthOfAllLines(m_CAD.Lines) + "\n"
+                + "Anzahl Circles: " + m_CAD.Circles.Length + " Gesamtlänge: " + m_CAD.LengthOfAllCircles(m_CAD.Circles) + "\n"
+                + "Anzahl Polylines: " + m_CAD.Polylines.Length + " Gesamtlänge: " + m_CAD.LengthOfAllPolylines(m_CAD.Polylines) + "\n");
         }
 
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace Uebung4SS20
                 CheckPathExists = true,
                 Filter = "Zeichendatei (*.xml)|*.xml",
                 InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Title = "In welche Datei soll gespeichert werden."
+                Title = "Welche Datei soll geöffnet werden."
             };
 
             if (openFileDialogXml.ShowDialog(this) == DialogResult.OK)
