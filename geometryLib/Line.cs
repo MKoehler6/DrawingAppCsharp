@@ -38,9 +38,9 @@ namespace geometryLib
 
         public Line() { }
 
-        public override void Draw(Graphics g)
+        public override void Draw(Graphics g, Pen pen)
         {
-            g.DrawLine(DrawPen, (float) StartPoint.X, (float)StartPoint.Y, 
+            g.DrawLine(pen, (float) StartPoint.X, (float)StartPoint.Y, 
                 (float)EndPoint.X, (float)EndPoint.Y);
         }
         public static ClickResult ClickHandler(Point pt, MouseButtons but, ref Curve curElement)

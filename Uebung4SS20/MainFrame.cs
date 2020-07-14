@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using vectorLib;
 using geometryLib;
 using Point = vectorLib.Point;
+using geometryLib.Properties;
 
 namespace Uebung4SS20
 {
@@ -113,47 +114,72 @@ namespace Uebung4SS20
 
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialogXml = new SaveFileDialog
-            {
-                AddExtension = true,
-                DefaultExt = ".xml",
-                CheckPathExists = true,
-                Filter = "Zeichendatei (*.xml)|*.xml",
-                InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Title = "In welche Datei soll gespeichert werden."
-            };
-
-            if(saveFileDialogXml.ShowDialog(this) == DialogResult.OK)
-                m_CAD.SaveXml(saveFileDialogXml.FileName);
-
-            //SaveFileDialog saveFileDialogJson = new SaveFileDialog
+            //SaveFileDialog saveFileDialogXml = new SaveFileDialog
             //{
             //    AddExtension = true,
-            //    DefaultExt = ".json",
+            //    DefaultExt = ".xml",
             //    CheckPathExists = true,
-            //    Filter = "Zeichendatei (*.json)|*.json",
+            //    Filter = "Zeichendatei (*.xml)|*.xml",
             //    InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
             //    Title = "In welche Datei soll gespeichert werden."
             //};
 
-            //if (saveFileDialogJson.ShowDialog(this) == DialogResult.OK)
-            //    m_CAD.SaveJson(saveFileDialogJson.FileName);
+            //if(saveFileDialogXml.ShowDialog(this) == DialogResult.OK)
+            //    m_CAD.SaveXml(saveFileDialogXml.FileName);
+
+            SaveFileDialog saveFileDialogJson = new SaveFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = ".json",
+                CheckPathExists = true,
+                Filter = "Zeichendatei (*.json)|*.json",
+                InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "In welche Datei soll gespeichert werden."
+            };
+
+            if (saveFileDialogJson.ShowDialog(this) == DialogResult.OK)
+                m_CAD.SaveJson(saveFileDialogJson.FileName);
         }
 
         private void öffnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //OpenFileDialog openFileDialogXml = new OpenFileDialog
+            //{
+            //    AddExtension = true,
+            //    DefaultExt = ".xml",
+            //    CheckPathExists = true,
+            //    Filter = "Zeichendatei (*.xml)|*.xml",
+            //    InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            //    Title = "Welche Datei soll geöffnet werden."
+            //};
+
+            //if (openFileDialogXml.ShowDialog(this) == DialogResult.OK)
+            //    m_CAD.OpenXml(openFileDialogXml.FileName);
+
             OpenFileDialog openFileDialogXml = new OpenFileDialog
             {
                 AddExtension = true,
-                DefaultExt = ".xml",
+                DefaultExt = ".json",
                 CheckPathExists = true,
-                Filter = "Zeichendatei (*.xml)|*.xml",
+                Filter = "Zeichendatei (*.json)|*.json",
                 InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 Title = "Welche Datei soll geöffnet werden."
             };
 
             if (openFileDialogXml.ShowDialog(this) == DialogResult.OK)
-                m_CAD.OpenXml(openFileDialogXml.FileName);
+                m_CAD.OpenJson(openFileDialogXml.FileName);
+        }
+
+        private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void optionenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new Optionen();
+            form.ShowDialog();
+            
         }
     }
 }

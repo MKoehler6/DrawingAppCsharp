@@ -10,7 +10,7 @@ namespace geometryLib
 {
     public class Polyline : Curve
     {
-        private List<Point> Points = new List<Point>();
+        public List<Point> Points = new List<Point>();
         public const string STARTMESSAGE = "Polylinie: Linksklick erzeugt ersten Punkt der neuen Polylinie   ESC: Abbruch";
         public const string ENDMESSAGE = "Polylinie: Linkssklick erzeugt weitere Punkte, Rechtsklick beendet   ESC: Abbruch";
 
@@ -18,22 +18,22 @@ namespace geometryLib
         public Polyline() { }
 
         // für die Serialisierung wird die List<Point> in ein Array umgewandelt und zurück
-        public Point[] pointsArray
-        {
-            get
-            {
-                return Points.ToArray();
-            }
-            set
-            {
-                Points = new List<Point>();
-                for (int i = 0; i < pointsArray.Length; i++)
-                {
-                    Points.Add((Point)pointsArray.GetValue(i));
-                }
+        //public Point[] pointsArray
+        //{
+        //    get
+        //    {
+        //        return Points.ToArray();
+        //    }
+        //    set
+        //    {
+        //        Points = new List<Point>();
+        //        for (int i = 0; i < pointsArray.Length; i++)
+        //        {
+        //            Points.Add((Point)value[i]);
+        //        }
                 
-            }
-        }
+        //    }
+        //}
 
         public override double Length
         {
@@ -149,11 +149,11 @@ namespace geometryLib
             Points.RemoveAt(Points.Count - 1);
         }
 
-        public override void Draw(Graphics g)
+        public override void Draw(Graphics g, Pen pen)
         {
             for (int i = 0; i < Points.Count - 1; i++)
             {
-                g.DrawLine(DrawPen, (float)Points[i].X, (float)Points[i].Y,
+                g.DrawLine(pen, (float)Points[i].X, (float)Points[i].Y,
                     (float)Points[i + 1].X, (float)Points[i+1].Y);
             }
         }

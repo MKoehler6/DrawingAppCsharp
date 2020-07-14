@@ -34,9 +34,9 @@ namespace geometryLib
             this.Radius = Radius;
         }
 
-        public override void Draw(Graphics g)
+        public override void Draw(Graphics g, Pen pen)
         {
-            g.DrawEllipse(DrawPen, 
+            g.DrawEllipse(pen, 
                 (float)(Center.X - Radius), 
                 (float)(Center.Y - Radius), 
                 (float)Radius * 2,

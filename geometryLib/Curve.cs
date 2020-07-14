@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace geometryLib
 {
@@ -10,9 +10,10 @@ namespace geometryLib
     {
         public virtual double Length { get; }
 
-        public abstract void Draw(Graphics g);
+        public abstract void Draw(Graphics g, Pen pen);
+
 
         //[JsonIgnore]
-        public Pen DrawPen { get; set; } = new Pen(Color.Black);
+        //public Pen DrawPen = new Pen(Color.Black);
     }
 }

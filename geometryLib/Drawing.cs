@@ -19,17 +19,22 @@ namespace geometryLib
         //https://stackoverflow.com/questions/803242/understanding-events-and-event-handlers-in-c-sharp
         //EventHandler ist ein Delegat vom System: public delegate void EventHandler(object sender, EventArgs e);
         public event EventHandler Redraw;
+        [JsonIgnore]
         public Curve m_currentCurve;
+        [JsonIgnore]
         public ClickHandler m_clickHandler = null;
+        [JsonIgnore]
         public TmpPointHandler m_tmpPointHandler = null;
+        [JsonIgnore]
         private ClickResult result;
 
-        [XmlArrayItem("Line", typeof(Line))]
-        [XmlArrayItem("Circle", typeof(Circle))]
-        [XmlArray("Polyline")]
-        [XmlArrayItem("pointsArray", typeof(Point[]))]
-        private List<Curve> Elements = new List<Curve>();
+        //[XmlArrayItem("Line", typeof(Line))]
+        //[XmlArrayItem("Circle", typeof(Circle))]
+        //[XmlArray("Polyline")]
+        //[XmlArrayItem("pointsArray", typeof(Point[]))]
+        public List<Curve> Elements = new List<Curve>();
 
+        [JsonIgnore]
         public Line[] Lines
         {
             get
@@ -46,6 +51,7 @@ namespace geometryLib
             }
         }
 
+        [JsonIgnore]
         public Circle[] Circles
         {
             get
@@ -62,6 +68,7 @@ namespace geometryLib
             }
         }
 
+        [JsonIgnore]
         public Polyline[] Polylines
         {
             get
@@ -150,11 +157,13 @@ namespace geometryLib
         {
             foreach (var element in Elements)
             {
-                element.Draw(g);
+                element.Draw(g, new Pen(Properties.Settings1.Default.FarbeStandard,
+                    Properties.Settings1.Default.Strichstaerke));
             }
             if (m_currentCurve != null)
             {
-                m_currentCurve.Draw(g);
+                m_currentCurve.Draw(g, new Pen(Properties.Settings1.Default.GummibandFarbe,
+                    Properties.Settings1.Default.Strichstaerke));
             }
         }
 
@@ -211,15 +220,27 @@ namespace geometryLib
             }            
         }
 
-        //public void SaveJson (string fileName)
-        //{
-        //    // Drawing als .json speichern
-        //    using (StreamWriter streamWriter = new StreamWriter(fileName))
-        //    {
-        //        var serializer = new JsonSerializer();
-        //        serializer.Serialize(streamWriter, this);
-        //    }
-        //}
+        public void SaveJson(string fileName)
+        {
+            // Drawing als .json speichern
+            using (StreamWriter streamWriter = File.CreateText(fileName))
+            {
+                JsonSerializer jsonSerializer = new JsonSerializer { TypeNameHandling = TypeNameHandling.Auto };
+                jsonSerializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                jsonSerializer.Serialize(streamWriter, this);
+            }
+            
+        }
+        public void OpenJson(string fileName)
+        {
+            using (StreamReader streamReader = File.OpenText(fileName))
+            {
+                JsonSerializer jsonSerializer = new JsonSerializer { TypeNameHandling = TypeNameHandling.Auto };
+                Drawing drawing = (Drawing)jsonSerializer.Deserialize(streamReader, typeof(Drawing));
+                this.Elements = drawing.Elements;
+                Redraw(this, new EventArgs());
+            }
+        }
 
         public void OpenXml (string fileName)
         {
@@ -231,10 +252,9 @@ namespace geometryLib
                 overrides.Add(typeof(Curve), "DrawPen", attribs);
                 overrides.Add(typeof(Drawing), "m_clickHandler", attribs);
                 overrides.Add(typeof(Drawing), "m_tmpPointHandler", attribs);
+
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(Drawing), overrides);
                 Drawing drawing = (Drawing)xmlSerializer.Deserialize(streamReader);
-
-                Console.WriteLine(drawing.Lines[0].StartPoint.ToString());
 
                 for (int i = 0; i < drawing.Lines.Length; i++) this.Elements.Add(drawing.Lines[i]);
                 for (int i = 0; i < drawing.Circles.Length; i++) this.Elements.Add(drawing.Circles[i]);
