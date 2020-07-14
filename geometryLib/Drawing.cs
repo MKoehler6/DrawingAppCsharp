@@ -204,5 +204,41 @@ namespace geometryLib
                 serializer.Serialize(streamWriter, this);
             }
         }
+
+        public void OpenXml (string fileName)
+        {
+            using (StreamReader streamReader = new StreamReader(fileName))
+            {
+                XmlAttributeOverrides overrides = new XmlAttributeOverrides();
+                XmlAttributes attribs = new XmlAttributes();
+                attribs.XmlIgnore = true;
+                overrides.Add(typeof(Curve), "DrawPen", attribs);
+                overrides.Add(typeof(Drawing), "m_clickHandler", attribs);
+                overrides.Add(typeof(Drawing), "m_tmpPointHandler", attribs);
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(TestDrawing), overrides);
+                TestDrawing testDrawing = (TestDrawing)xmlSerializer.Deserialize(streamReader);
+                Console.WriteLine(testDrawing.lines[0].StartPoint.ToString());
+
+                for (int i = 0; i < testDrawing.lines.Length; i++) this.Elements.Add(testDrawing.lines[i]);
+                for (int i = 0; i < testDrawing.circles.Length; i++) this.Elements.Add(testDrawing.circles[i]);
+                for (int i = 0; i < testDrawing.polylines.Length; i++) this.Elements.Add(testDrawing.polylines[i]);
+
+                if (Redraw != null) Redraw(this, new EventArgs());
+            }
+        }
+    }
+    public class TestDrawing
+    {
+        [XmlArray("Lines")]
+        [XmlArrayItem("Line", typeof(Line))]
+        public Line[] lines;
+
+        [XmlArray("Circles")]
+        [XmlArrayItem("Circle", typeof(Circle))]
+        public Circle[] circles;
+
+        [XmlArray("Polylines")]
+        [XmlArrayItem("pointsArray", typeof(Point[]))]
+        public Polyline[] polylines;
     }
 }
