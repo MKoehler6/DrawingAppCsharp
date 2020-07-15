@@ -15,6 +15,7 @@ namespace Uebung4SS20
         public Optionen()
         {
             InitializeComponent();
+            comboBox3.Text = geometryLib.Properties.Settings1.Default.Strichstaerke.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,6 +33,15 @@ namespace Uebung4SS20
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                geometryLib.Properties.Settings1.Default.FarbeStandard = colorDialog.Color;
+            }
         }
     }
 }
