@@ -22,7 +22,7 @@ namespace geometryLib
                 return result.Normalize();
             }
         }
-        public override double Length 
+        public double Length 
         { 
             get 
             {

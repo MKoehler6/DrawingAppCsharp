@@ -16,6 +16,8 @@ namespace Uebung4SS20
         {
             InitializeComponent();
             comboBox3.Text = geometryLib.Properties.Settings1.Default.Strichstaerke.ToString();
+            colorStandard.BackColor = geometryLib.Properties.Settings1.Default.FarbeStandard;
+            colorRubberb.BackColor = geometryLib.Properties.Settings1.Default.GummibandFarbe;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -28,19 +30,32 @@ namespace Uebung4SS20
             geometryLib.Properties.Settings1.Default.Strichstaerke =
                 float.Parse(comboBox3.Text);
             DialogResult = DialogResult.OK;
+            // Speichern der Properties in AppData-Verzeichnis
+            geometryLib.Properties.Settings1.Default.Save();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Abbrechen_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void standardColor_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 geometryLib.Properties.Settings1.Default.FarbeStandard = colorDialog.Color;
+                colorStandard.BackColor = colorDialog.Color;
+            }
+        }
+
+        private void RubberbandColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                geometryLib.Properties.Settings1.Default.GummibandFarbe = colorDialog.Color;
+                colorRubberb.BackColor = colorDialog.Color;
             }
         }
     }

@@ -134,7 +134,7 @@ namespace Uebung4SS20
                 CheckPathExists = true,
                 Filter = "Zeichendatei (*.json)|*.json",
                 InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Title = "In welche Datei soll gespeichert werden."
+                Title = "In welche Datei soll gespeichert werden(JSON-Format)."
             };
 
             if (saveFileDialogJson.ShowDialog(this) == DialogResult.OK)
@@ -156,18 +156,18 @@ namespace Uebung4SS20
             //if (openFileDialogXml.ShowDialog(this) == DialogResult.OK)
             //    m_CAD.OpenXml(openFileDialogXml.FileName);
 
-            OpenFileDialog openFileDialogXml = new OpenFileDialog
+            OpenFileDialog openFileDialogJson = new OpenFileDialog
             {
                 AddExtension = true,
                 DefaultExt = ".json",
                 CheckPathExists = true,
                 Filter = "Zeichendatei (*.json)|*.json",
                 InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Title = "Welche Datei soll geöffnet werden."
+                Title = "Welche Datei soll geöffnet werden (JSON-Format)?"
             };
 
-            if (openFileDialogXml.ShowDialog(this) == DialogResult.OK)
-                m_CAD.OpenJson(openFileDialogXml.FileName);
+            if (openFileDialogJson.ShowDialog(this) == DialogResult.OK)
+                m_CAD.OpenJson(openFileDialogJson.FileName);
         }
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)

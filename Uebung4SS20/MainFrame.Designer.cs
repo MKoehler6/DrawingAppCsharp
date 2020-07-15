@@ -33,11 +33,8 @@
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.öffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zeichnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.linieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kreisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.polylinieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.lineButton = new System.Windows.Forms.ToolStripButton();
             this.circleButton = new System.Windows.Forms.ToolStripButton();
@@ -46,7 +43,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -59,12 +55,11 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dateiToolStripMenuItem,
-            this.zeichnenToolStripMenuItem,
             this.einstellungenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(2800, 56);
+            this.menuStrip1.Size = new System.Drawing.Size(2800, 61);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -91,34 +86,6 @@
             this.speichernToolStripMenuItem.Text = "Speichern";
             this.speichernToolStripMenuItem.Click += new System.EventHandler(this.speichernToolStripMenuItem_Click);
             // 
-            // zeichnenToolStripMenuItem
-            // 
-            this.zeichnenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.linieToolStripMenuItem,
-            this.kreisToolStripMenuItem,
-            this.polylinieToolStripMenuItem});
-            this.zeichnenToolStripMenuItem.Name = "zeichnenToolStripMenuItem";
-            this.zeichnenToolStripMenuItem.Size = new System.Drawing.Size(193, 57);
-            this.zeichnenToolStripMenuItem.Text = "Zeichnen";
-            // 
-            // linieToolStripMenuItem
-            // 
-            this.linieToolStripMenuItem.Name = "linieToolStripMenuItem";
-            this.linieToolStripMenuItem.Size = new System.Drawing.Size(350, 66);
-            this.linieToolStripMenuItem.Text = "Linie";
-            // 
-            // kreisToolStripMenuItem
-            // 
-            this.kreisToolStripMenuItem.Name = "kreisToolStripMenuItem";
-            this.kreisToolStripMenuItem.Size = new System.Drawing.Size(350, 66);
-            this.kreisToolStripMenuItem.Text = "Kreis";
-            // 
-            // polylinieToolStripMenuItem
-            // 
-            this.polylinieToolStripMenuItem.Name = "polylinieToolStripMenuItem";
-            this.polylinieToolStripMenuItem.Size = new System.Drawing.Size(350, 66);
-            this.polylinieToolStripMenuItem.Text = "Polylinie";
-            // 
             // einstellungenToolStripMenuItem
             // 
             this.einstellungenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -128,6 +95,13 @@
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
             this.einstellungenToolStripMenuItem.Click += new System.EventHandler(this.einstellungenToolStripMenuItem_Click);
             // 
+            // optionenToolStripMenuItem
+            // 
+            this.optionenToolStripMenuItem.Name = "optionenToolStripMenuItem";
+            this.optionenToolStripMenuItem.Size = new System.Drawing.Size(538, 66);
+            this.optionenToolStripMenuItem.Text = "Optionen";
+            this.optionenToolStripMenuItem.Click += new System.EventHandler(this.optionenToolStripMenuItem_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
@@ -136,7 +110,7 @@
             this.circleButton,
             this.polylineButton,
             this.infoButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 56);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
             this.toolStrip1.Size = new System.Drawing.Size(2800, 93);
@@ -214,23 +188,16 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 149);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 154);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(2800, 1203);
+            this.pictureBox1.Size = new System.Drawing.Size(2800, 1198);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.Resize += new System.EventHandler(this.pictureBox1_Resize);
-            // 
-            // optionenToolStripMenuItem
-            // 
-            this.optionenToolStripMenuItem.Name = "optionenToolStripMenuItem";
-            this.optionenToolStripMenuItem.Size = new System.Drawing.Size(538, 66);
-            this.optionenToolStripMenuItem.Text = "Optionen";
-            this.optionenToolStripMenuItem.Click += new System.EventHandler(this.optionenToolStripMenuItem_Click);
             // 
             // MainFrame
             // 
@@ -242,7 +209,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainFrame";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFrame_KeyDown);
@@ -262,10 +229,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem zeichnenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem linieToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kreisToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem polylinieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem einstellungenToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton circleButton;
