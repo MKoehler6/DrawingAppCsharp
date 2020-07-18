@@ -14,6 +14,13 @@ using Newtonsoft.Json;
 
 namespace geometryLib
 {
+    /// <summary>
+    /// In dieser Klasse werden in der List Elements die einzelnen Circle, Lines und Polylines gespeichert,
+    /// durch die Clickhandler wird entsprechend der angeklickten Schaltfläche Line, Circle oder Polyline über das Delegate 
+    /// ClickHandler die jeweilige ClickHandler-Methode in den Klassen Line, Circle, Polyline zugeordnet
+    /// MouseDown und MouseMove Ereignisse werden weiterverarbeitet
+    /// Open und Save in einer Json (oder Xml)-Datei werden durchgeführt
+    /// </summary>
     public class Drawing
     {
         //https://stackoverflow.com/questions/803242/understanding-events-and-event-handlers-in-c-sharp
@@ -193,6 +200,7 @@ namespace geometryLib
             }
         }
 
+        // Escape-Taste wurde gedrückt oder bei Line und Circle die rechte Maustaste
         public void Cancel()
         {
             m_currentCurve = null;

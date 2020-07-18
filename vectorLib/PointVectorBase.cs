@@ -4,6 +4,11 @@ using System.Text;
 
 namespace vectorLib
 {
+    /// <summary>
+    /// Basisklasse für Point und Vector
+    /// enthält Methoden zum Addieren, Distanzberechnung und Produktberechnung
+    /// definiert Operatoren == und !=
+    /// </summary>
     public abstract class PointVectorBase
     {
         public double X { get; set; }

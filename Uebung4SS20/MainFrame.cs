@@ -172,14 +172,12 @@ namespace Uebung4SS20
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void optionenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form form = new Optionen();
             form.ShowDialog();
-            
         }
     }
 }
