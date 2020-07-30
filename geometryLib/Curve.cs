@@ -13,7 +13,5 @@ namespace geometryLib
         public abstract void Draw(Graphics g, Pen pen);
 
 
-        //[JsonIgnore]
-        //public Pen DrawPen = new Pen(Color.Black);
     }
 }

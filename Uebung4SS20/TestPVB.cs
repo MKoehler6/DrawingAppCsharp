@@ -17,10 +17,10 @@ namespace vectorLib
 
         public TestPVB(TestPVB testpvb) : base(testpvb) { }
 
-        public static void Main(String[] Args)
-        {
-            Point p = new Point(1, 2, 3);
-            Console.WriteLine(p.GetHashCode());
-        }
+        //public static void Main(String[] Args)
+        //{
+        //    Point p = new Point(1, 2, 3);
+        //    Console.WriteLine(p.GetHashCode());
+        //}
     }
 }

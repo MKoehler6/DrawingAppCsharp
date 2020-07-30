@@ -102,7 +102,7 @@ namespace vectorLib
         }
         public override int GetHashCode()
         {
-            return base.GetHashCode() ^ 34577658;
+            return base.GetHashCode() ^ 34577658; // ^ = bitweise XOR
         }
         public override string ToString()
         {

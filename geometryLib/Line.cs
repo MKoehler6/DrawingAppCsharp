@@ -14,6 +14,8 @@ namespace geometryLib
         public Point EndPoint;
         public const string STARTMESSAGE = "Linie: Linksklick erzeugt ersten Punkt der neuen Linie   ESC: Abbruch";
         public const string ENDMESSAGE = "Linie: Linkssklick erzeugt Endpunkt der Linie   ESC: Abbruch";
+        
+        // liefert den normalisierten Vector vom Start zum Endpunkt
         public Vector Direction 
         { 
             get

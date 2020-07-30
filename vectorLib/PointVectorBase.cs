@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace vectorLib
 {
     /// <summary>
     /// Basisklasse für Point und Vector
     /// enthält Methoden zum Addieren, Distanzberechnung und Produktberechnung
+    /// überschreibt die Methoden GetHashCode, Equals und ToString
     /// definiert Operatoren == und !=
     /// </summary>
     public abstract class PointVectorBase
@@ -64,7 +66,10 @@ namespace vectorLib
         }
         public override int GetHashCode()
         {
-            return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
+            //Console.WriteLine(X.GetHashCode());
+            //Console.WriteLine(Y.GetHashCode());
+            //Console.WriteLine(X.GetHashCode() ^ Y.GetHashCode());
+            return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode(); // ^ = bitweise XOR
         }
         public override string ToString()
         {
